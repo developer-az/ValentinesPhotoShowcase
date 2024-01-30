@@ -1,0 +1,45 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcoral;
+}
+
+input#open {    
+    display: none;
+}
+
+.valentines-day-card {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    transform: perspective(2500px);
+    transition: .3s;
+}
+
+.card-front {
+    position: relative;
+    background-color: #fff0f3;
+    width: 300px;
+    height: 300px;
+    transform-origin: left;
+    box-shadow: inset 100px 20px 100px rgba(0, 0, 0,.15), 30px 0 50px rgba(0, 0, 0,.3);
+    transition: .3s;
+}
+
+.card-front:before {
+    content:"";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background-color: pink;
+    top:10px;
+    left:10px;
+}
+
+.card-inside {
+    position: absolute;
+    background-color: fff0f3;
+}
