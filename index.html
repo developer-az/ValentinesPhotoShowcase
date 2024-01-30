@@ -3,23 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>valentines</title>
+    <title>Valentines</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <div class="valentines-day-card">
-<input id="open" type="checkbox">
-<label class="open" for="open"></label>
-<div class="card-front">
-    <div class="note">Click To Open</div>
-</div>
-   <div class="card-inside">
-        <div class="text-one">Happy</div>
-        <div class="heart"></div>
-        <div class="smile"></div>
-        <div class="eyes"></div>
+    <div class="valentines-day-card">
+        <input id="open" type="checkbox">
+        <label class="open" for="open"></label>
+        <div class="card-front">
+            <div class="note">Click To Open</div>
+        </div>
+        <div class="card-inside">
+            <div class="text-one">Happy</div>
+            <div class="heart"></div>
+            <div class="smile"></div>
+            <div class="eyes"></div>
+        </div>
     </div>
-</div>
-<script src="main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var checkbox = document.getElementById('open');
+            var label = document.querySelector('.open');
+
+            label.addEventListener('click', function() {
+                if (checkbox.checked) {
+                    setTimeout(function() {
+                        window.location.href = 'page.html';
+                    }, 5000); // Wait for 5 seconds
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
