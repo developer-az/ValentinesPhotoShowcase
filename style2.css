@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-    font-family: 'Dancing Script', cursive;
- 
+  font-family: 'Dancing Script', cursive;
   background-color: black;
   color: #111;
   height: 100vh;
@@ -17,15 +16,12 @@ body {
   align-items: center;
 }
 
-
-
 :root {
-  --marquee-width: 80vw;
+  --marquee-width: 120vw;
   --marquee-height: 60vh;
-  /* --marquee-elements: 12; */ /* defined with JavaScript */
-  --marquee-elements-displayed: 4;
+  --marquee-elements-displayed: 6;
   --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
-  --marquee-animation-duration: calc(var(--marquee-elements) * 4s);
+  --marquee-animation-duration: calc(var(--marquee-elements) * 2s);
 }
 
 .marquee {
@@ -36,7 +32,9 @@ body {
   overflow: hidden;
   position: relative;
 }
-.marquee:before, .marquee:after {
+
+.marquee:before,
+.marquee:after {
   position: absolute;
   top: 0;
   width: 10rem;
@@ -44,53 +42,76 @@ body {
   content: "";
   z-index: 1;
 }
+
 .marquee:before {
   left: 0;
   background: linear-gradient(to right, #111 0%, transparent 100%);
 }
+
 .marquee:after {
   right: 0;
   background: linear-gradient(to left, #111 0%, transparent 100%);
 }
+
 .marquee-content {
-  list-style: none;
-  height: 100%;
-  display: flex;
-  animation: scrolling var(--marquee-animation-duration) linear infinite;
-}
- .marquee-content:hover {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap; /* Prevent items from wrapping to the next line */
+    animation: scrolling var(--marquee-animation-duration) linear infinite;
+  }
+
+.marquee-content:hover {
   animation-play-state: paused;
-} 
+}
 
 @keyframes scrolling {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements)));
+  }
 }
+
 .marquee-content li {
   display: flex;
   justify-content: center;
   align-items: center;
-   text-align: center; 
+  text-align: center;
   flex-shrink: 0;
   width: var(--marquee-element-width);
   max-height: 100%;
-  font-size: calc(var(--marquee-height)*1/4); /* 5rem; */
+  font-size: calc(var(--marquee-height) * 1 / 4);
   white-space: nowrap;
 }
 
 .marquee-content li img {
   width: 100%;
-   /*height: 100%; */
-
 }
 
 @media (max-width: 600px) {
-  html { font-size: 12px; }
+  html {
+    font-size: 12px;
+  }
+
+  body {
+    align-items: flex-start; /* Align marquee to the top on small screens */
+  }
+
   :root {
     --marquee-width: 100vw;
     --marquee-height: 12vh;
     --marquee-elements-displayed: 3;
   }
-  
-  .marquee:before, .marquee:after { width: 5rem; }
+
+  .marquee {
+    width: 100%;
+  }
+
+  .marquee:before,
+  .marquee:after {
+    width: 5rem;
+  }
 }

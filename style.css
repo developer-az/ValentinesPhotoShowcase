@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
 
-
 body {
     height: 100vh;
     font-family: 'Mochiy Pop P One', sans-serif;
@@ -8,6 +7,43 @@ body {
     align-items: center;
     justify-content: center;
     background-color: lightcoral;
+}
+
+/* Add media query for smaller screens */
+@media screen and (max-width: 600px) {
+    .valentines-day-card {
+        width: 100%; /* Make the card take up the full width of the screen */
+        max-width: 300px; /* Set a maximum width for larger screens */
+    }
+
+    .note {
+        width: 100%; /* Make the note take up the full width of the screen */
+        max-width: 200px; /* Set a maximum width for larger screens */
+        left: 0; /* Center the note on smaller screens */
+    }
+
+    .text-one {
+        width: 100%; /* Make the text take up the full width of the screen */
+        max-width: 300px; /* Set a maximum width for larger screens */
+    }
+
+    .heart {
+        top: 10%; /* Adjust the position of the heart on smaller screens */
+        left: 50%; /* Center the heart on smaller screens */
+        transform: translateX(-50%) rotate(-45deg); /* Center the heart horizontally */
+    }
+
+    .smile {
+        top: 15%; /* Adjust the position of the smile on smaller screens */
+        left: 50%; /* Center the smile on smaller screens */
+        transform: translateX(-50%); /* Center the smile horizontally */
+    }
+
+    .eyes {
+        top: 13%; /* Adjust the position of the eyes on smaller screens */
+        left: 50%; /* Center the eyes on smaller screens */
+        transform: translateX(-50%); /* Center the eyes horizontally */
+    }
 }
 
 input#open {    
