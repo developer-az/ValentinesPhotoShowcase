@@ -1,12 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var checkbox = document.getElementById('open');
-    var label = document.querySelector('.open');
+// main.js
 
-    label.addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    var checkbox = document.getElementById('open');
+
+    checkbox.addEventListener('change', function () {
         if (checkbox.checked) {
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location.href = 'page.html';
-            }, 2); // Wait for 2 seconds
+            }, 3000);
         }
     });
 });

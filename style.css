@@ -70,15 +70,16 @@ input#open {
     box-shadow: inset 100px 20px 100px rgba(0, 0, 0,.13), 30px 0 50px rgba(0,0,0,.1);
 }
 
-#open:checked ~ .card-front::before {
+#open:checked ~ .card-front:before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background-color: pink;
+    top: 10px;
+    left: 10px;
     z-index: 5;
-    background-color: #fff0f3;
-    width: 300px;
-    height: 300px;
-    top: 0;
-    left: 0;
-    box-shadow: inset 100px 20px 100px rgba(0, 0, 0,.1) 30px 0 50px rgba(0, 0, 0,.1);
-}
+    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .1) 30px 0 50px rgba(0, 0, 0, .1); }
 
 .note {
     position: relative;
