@@ -28,7 +28,7 @@ body {
   width: var(--marquee-width);
   height: var(--marquee-height);
   background-color: black;
-  color: bisque;
+  color: red;
   overflow: hidden;
   position: relative;
 }
@@ -61,9 +61,6 @@ body {
     animation: scrolling var(--marquee-animation-duration) linear infinite;
   }
 
-.marquee-content:hover {
-  animation-play-state: paused;
-}
 
 @keyframes scrolling {
   0% {
