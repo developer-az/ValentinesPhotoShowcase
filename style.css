@@ -199,8 +199,8 @@ input#open {
   }
   
   .heart2 {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     background: red;
     position: absolute;
     animation: float 5s linear infinite;
