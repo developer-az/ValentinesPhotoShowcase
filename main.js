@@ -31,11 +31,9 @@ function createHeart() {
     }
 }
 
+setInterval(createHeart, 400);
 setInterval(createHeart, 500);
-
-
-setInterval(createHeart, 500);
-setInterval(createHeart, 500);
+setInterval(createHeart, 300);
 
 
 document.addEventListener('DOMContentLoaded', function () {
