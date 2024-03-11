@@ -190,6 +190,34 @@ input#open {
     transform: rotate(-45deg);
     animation: .8s beat infinite;
   }
+
+  body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  
+  .heart2 {
+    width: 20px;
+    height: 20px;
+    background: red;
+    position: absolute;
+    animation: float 5s linear infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-100vh);
+    }
+    100% {
+      transform: translateY(-200vh);
+    }
+  }
+  
     
   .heart:before, .heart:after {
     content:"";
