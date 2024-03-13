@@ -203,7 +203,7 @@ input#open {
     height: 10px;
     background: red;
     position: absolute;
-    animation: float 5s linear infinite;
+    animation: float .3s linear infinite;
   }
   
   @keyframes float {

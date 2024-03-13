@@ -8,7 +8,8 @@
 
 body {
   font-family: 'Dancing Script', cursive;
-  background-color: black;
+  font-style: oblique;
+  background-color: white;
   color: #111;
   height: 100vh;
   display: flex;
@@ -27,7 +28,7 @@ body {
 .marquee {
   width: var(--marquee-width);
   height: var(--marquee-height);
-  background-color: black;
+  background-color: whitesmoke;
   color: red;
   overflow: hidden;
   position: relative;
@@ -45,12 +46,12 @@ body {
 
 .marquee:before {
   left: 0;
-  background: linear-gradient(to right, #111 0%, transparent 100%);
+  background: linear-gradient(to right, #ffffff 0%, transparent 50%);
 }
 
 .marquee:after {
   right: 0;
-  background: linear-gradient(to left, #111 0%, transparent 100%);
+  background: linear-gradient(to left, #ffffff 0%, transparent 50%);
 }
 
 .marquee-content {
