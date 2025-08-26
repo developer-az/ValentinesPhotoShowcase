@@ -1,28 +1,74 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Valentines</title>
+    <title>Valentine's Photo Showcase</title>
+    <meta name="description" content="A romantic interactive Valentine's card with photos and animations">
+    <meta name="theme-color" content="#d04e4e">
+    
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="Valentine's Photo Showcase">
+    <meta property="og:description" content="A romantic interactive Valentine's card with photos and animations">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/1.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Valentine's Photo Showcase">
+    <meta name="twitter:description" content="A romantic interactive Valentine's card">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-modern.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>">
 </head>
 <body>
-    <div class="valentines-day-card">
-        <input id="open" type="checkbox">
-        <label class="open" for="open"></label>
+    <div class="valentines-day-card" role="main" id="main-content">
+        <input id="open" type="checkbox" aria-describedby="card-instructions">
+        <label class="open" for="open" tabindex="0" role="button" aria-label="Open Valentine's card"></label>
         <div class="card-front">
             <div class="note">Click To Open <3</div>
         </div>
         <div class="card-inside">
             <div class="text-one">Happy</div>
-            <div class="heart"></div>
-            <div class="smile"></div>
-            <div class="eyes"></div>
+            <div class="heart" aria-hidden="true"></div>
+            <div class="smile" aria-hidden="true"></div>
+            <div class="eyes" aria-hidden="true"></div>
         </div>
     </div>
-    <div id="heart2-container"></div>
-    <script src="main.js"></script>
+    
+    <div id="card-instructions" class="sr-only">
+        Click the card or press Enter to open your Valentine's surprise
+    </div>
+    
+    <div id="heart2-container" aria-hidden="true"></div>
+    
+    <!-- Scripts -->
+    <script src="main-compatible.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
