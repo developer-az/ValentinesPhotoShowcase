@@ -3,25 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I love you</title>
+    <title>I Love You - Valentine's Photo Showcase</title>
+    <meta name="description" content="Romantic photo marquee with loving messages">
+    <meta name="theme-color" content="#d04e4e">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="I Love You - Valentine's Photo Showcase">
+    <meta property="og:description" content="Romantic photo marquee with loving messages">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preconnect to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style-modern.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>">
 </head>
 <body>
-    <div class="marquee">
-        <ul class="marquee-content">
-          <li> wishing</li>
-          <li> <img src='1.png'/></li>
+    <main class="marquee" role="main" aria-label="Photo marquee with romantic message">
+        <ul class="marquee-content" aria-live="polite">
+          <li>wishing</li>
+          <li><img src="1.png" alt="Romantic photo 1" loading="lazy"/></li>
           <li>for</li>
-          <li> <img src='2.png'/> </li>
+          <li><img src="2.png" alt="Romantic photo 2" loading="lazy"/></li>
           <li>more</li>
-          <li> <img src='3.jpg'/></li>
+          <li><img src="3.jpg" alt="Romantic photo 3" loading="lazy"/></li>
           <li>moments</li>
-          <li><img src='1.png'/></li>
-          <li> with you</li>
-          <li><img src='2.png'/></li>
-     </ul>
-      </div>
-      <script src="main2.js"></script>
+          <li><img src="1.png" alt="Romantic photo 1" loading="lazy"/></li>
+          <li>with you</li>
+          <li><img src="2.png" alt="Romantic photo 2" loading="lazy"/></li>
+        </ul>
+    </main>
+    
+    <nav aria-label="Page navigation">
+        <button onclick="history.back()" class="back-button" aria-label="Go back to Valentine's card">
+            ← Back to Card
+        </button>
+    </nav>
+    
+    <script src="main2.js"></script>
+    <script>
+        // Initialize theme manager on this page too - compatible version
+        (function() {
+            // Simple theme manager for page 2
+            class SimpleThemeManager {
+                constructor() {
+                    this.currentTheme = this.getStoredTheme() || this.getSystemTheme();
+                    this.applyTheme(this.currentTheme);
+                }
+
+                getStoredTheme() {
+                    try {
+                        return localStorage.getItem('valentine-theme');
+                    } catch (e) {
+                        return null;
+                    }
+                }
+
+                getSystemTheme() {
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+
+                applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    this.currentTheme = theme;
+                    try {
+                        localStorage.setItem('valentine-theme', theme);
+                    } catch (e) {
+                        console.warn('Could not store theme');
+                    }
+                }
+
+                toggleTheme() {
+                    const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+                    this.applyTheme(newTheme);
+                }
+
+                getCurrentTheme() {
+                    return this.currentTheme;
+                }
+            }
+            
+            const themeManager = new SimpleThemeManager();
+            
+            // Add theme toggle button
+            const toggleButton = document.createElement('button');
+            toggleButton.className = 'theme-toggle';
+            toggleButton.setAttribute('aria-label', 'Toggle dark/light theme');
+            toggleButton.innerHTML = `
+                <span class="theme-toggle-icon">${themeManager.getCurrentTheme() === 'dark' ? '☀️' : '🌙'}</span>
+                <span class="sr-only">Toggle theme</span>
+            `;
+            
+            toggleButton.addEventListener('click', () => {
+                themeManager.toggleTheme();
+                const icon = toggleButton.querySelector('.theme-toggle-icon');
+                icon.textContent = themeManager.getCurrentTheme() === 'dark' ? '☀️' : '🌙';
+            });
+
+            document.body.appendChild(toggleButton);
+        })();
+    </script>
 </body>
 </html>
   
